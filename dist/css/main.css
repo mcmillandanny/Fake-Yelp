@@ -1,0 +1,186 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+* {
+	box-sizing: border-box;
+
+}
+body {
+	font-family: 'PT Sans', sans-serif;
+}
+
+
+
+.yelp-wrapper {
+	background: url("/dist/img/bg-yelp.png") no-repeat;
+	background-position: center;
+	width: 100%;
+	min-height: 100vh;
+	position: relative;
+}
+
+.yelp-wrapper .company-name {
+	text-align: center;
+	font-size: 4em;
+	position: absolute;
+	margin: 0;
+	top: 25%;
+	left: 50%;
+	transform: translate(-50%, -20%);
+	border-bottom: 1px solid black;
+	padding-bottom: 10px;
+}
+
+.yelp-wrapper .form-wrapper {
+	padding: 10px;
+	position: absolute;
+	margin: 0;
+	top: 40%;
+	left: 50%;
+	transform: translate(-50%, -20%);
+}
+
+.yelp-wrapper .form-wrapper .find-food-input {
+	width: 250px;
+	border-radius: 4px;
+	position: absolute;
+	top: 0%;
+	left: 50%;
+	margin: 0;
+	transform: translate(-50%, -100%);
+	border: 1px white solid;
+	outline: none;
+	padding: 5px;
+	background: #fff;
+}
+
+.yelp-wrapper .form-wrapper .find-area-input {
+	width: 250px;
+	padding: 5px;
+	border-radius: 4px;
+	position: absolute;
+	top: 60%;
+	left: 50%;
+	transform: translate(-50%, 0%);
+	border: 1px white solid;
+	outline: none;
+	background: #fff;
+
+	
+}
+
+
+.yelp-wrapper .form-wrapper #search {
+	position: absolute;
+	top: 100%;
+	left: 50%;
+	margin: 0;
+	transform: translate(-50%, 100%);
+	text-decoration: none;
+	color: black;
+	border: 1px solid orange;
+	background: orange;
+	padding: 10px;
+	border-radius: 4px;
+}
+
+.results-wrapper {
+	margin: 20px;
+	width: 40%;
+}
+
+.label-food-input, .find-food-input {
+	position: relative;
+	display: block;
+	padding-right: 76px;
+	width: 170px;
+	box-sizing: border-box;
+
+}
+
+.label-food-input::after {
+	content:  "" attr(data-placeholder);
+	position: absolute;
+	top: -28px;
+	left: -34px;
+	font-family: arial, helvetica, sans-serif;
+	font-size: 12px;
+	display: block;
+	color: rgba(0, 0, 0, 0.6);
+	font-weight: bold;
+	z-index: 1;
+	}
+
+/* .label-food-input::before:hover {
+	color: red;
+	opacity: 0;
+} */
+
+.results-wrapper li {
+	display: flex;
+	flex-direction: column;
+	margin: 20px;
+	padding: 5px;
+}
+
+.results-wrapper a {
+	text-align: center;
+	text-decoration: none;
+}
+
+.results-wrapper img {
+	max-width: 100%;
+}
+
+.results-wrapper p {
+	text-align: center;
+	margin: 5px;
+}
+/*# sourceMappingURL=main.css.map */
