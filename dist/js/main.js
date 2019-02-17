@@ -45,26 +45,30 @@ console.log("Fake Yelp");
         // resultsEl.removeChild(liEl);
         for (var i = 0; i <= businessArray.length - 1; i++) {
             console.log(businessArray[i]);
+            var lat = businessArray[i].coordinates.latitude;
+            var long = businessArray[i].coordinates.longitude;
+
+            console.log(lat, long);
 
             var currentBusiness = businessArray[i];
             var currentBusinessLocation = businessArray[i].location;
             var liEl = document.createElement('li');
             var aEl = document.createElement('a');
             var imgEl = document.createElement('img');
-            var pAddressEl = document.createElement('p');
+            var h1AddresEl = document.createElement('h1');
             var p$El = document.createElement('p');
             var pRatingEl = document.createElement('p');
 
             aEl.innerHTML = currentBusiness.name;
             aEl.href = currentBusiness.url;
             imgEl.src = currentBusiness.image_url;
-            pAddressEl.innerHTML = currentBusinessLocation.address1 + "<br/>" + currentBusinessLocation.city + ", " + currentBusinessLocation.state + " " + currentBusinessLocation.zip_code;
+            h1AddresEl.innerHTML = currentBusinessLocation.address1 + "<br/>" + currentBusinessLocation.city + ", " + currentBusinessLocation.state + " " + currentBusinessLocation.zip_code;
             p$El.innerHTML = currentBusiness.price;
             pRatingEl.innerHTML = "Rating " + currentBusiness.rating;
 
             liEl.appendChild(aEl);
             liEl.appendChild(imgEl);
-            liEl.appendChild(pAddressEl);
+            liEl.appendChild(h1AddresEl);
             liEl.appendChild(p$El);
             liEl.appendChild(pRatingEl);
 
@@ -83,26 +87,33 @@ console.log("Fake Yelp");
             headers: {
                 'Authorization': 'Bearer ' + API_KEY
             }
+
         })
         //the response is the JSON data we are getting back
         .then(function (response) {
-            console.log('here is the get response data for key:', response.data, response);
+            console.log('here is the get response data for key:', response.data);
             displayBusinesses(response.data.businesses);
+            getLatLong(response);
         });
     }
+
+    var getLatLong = function getLatLong(response) {
+        var locationsArray = [];
+        response.data.businesses.forEach(function (business) {
+            var coordinate = {
+                name: business.name,
+                lat: business.coordinates.latitude,
+                lng: business.coordinates.longitude,
+                phone: business.phone
+            };
+            locationsArray.push(coordinate);
+        });
+        console.table(locationsArray);
+        googleMaps.showMarkers(locationsArray);
+    };
+
+    return {
+        getLatLong: getLatLong
+    };
 })();
-
-
-
-let labelFood = document.querySelector('.label-food-input');
-let findFood = document.querySelector('.find-food-input')
-
-labelFood.addEventListener('mouseenter', (e)=> {
-    console.log("moused over");
-    labelFood.style.display = "none";
-
-    setTimeout(function() {
-        labelFood.style.display = "block"
-      }, 500);
-})
 //# sourceMappingURL=main.js.map

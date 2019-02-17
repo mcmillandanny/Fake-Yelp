@@ -166,21 +166,34 @@ body {
 .results-wrapper li {
 	display: flex;
 	flex-direction: column;
-	margin: 20px;
+	/* margin: 20px; */
 	padding: 5px;
+	list-style-type: none;
 }
 
 .results-wrapper a {
 	text-align: center;
 	text-decoration: none;
+	color: #d32323;
+	padding: 10px;
+
 }
 
 .results-wrapper img {
 	max-width: 100%;
+	-webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+	box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
 }
 
-.results-wrapper p {
+.results-wrapper p, h1 {
 	text-align: center;
-	margin: 5px;
+	margin: 2px;
 }
+.results-wrapper h1 {
+	margin-top: 10px;
+
+}
+
+
 /*# sourceMappingURL=main.css.map */

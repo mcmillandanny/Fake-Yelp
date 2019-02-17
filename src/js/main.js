@@ -1,7 +1,6 @@
 console.log("Fake Yelp");
 
 (function(){
-
 				
     const API_KEY = 'xICUj5FsqM8P6cfNhFQEYwtYzrv75F4WEqj-Hns-fUTZgyLOzQBVyr01f9g3p-5P3J9S7LkrGhLEWjqi7t_ZHoZedrj9zV1E34GIIu1nLLF814cws_futxGtRGPiWnYx';
                 
@@ -46,26 +45,30 @@ console.log("Fake Yelp");
         // resultsEl.removeChild(liEl);
         for (var i = 0; i <= businessArray.length - 1; i++) {
             console.log(businessArray[i]);
+            let lat = businessArray[i].coordinates.latitude;
+            let long = businessArray[i].coordinates.longitude;
+
+            console.log(lat, long);
 
             const currentBusiness = businessArray[i];
             const currentBusinessLocation = businessArray[i].location;
             let liEl = document.createElement('li');
             let aEl = document.createElement('a');
             let imgEl = document.createElement('img');
-            let pAddressEl = document.createElement('p');
+            let h1AddresEl = document.createElement('h1');
             let p$El = document.createElement('p');
             let pRatingEl = document.createElement('p');
 
             aEl.innerHTML = currentBusiness.name;
             aEl.href = currentBusiness.url;
             imgEl.src = currentBusiness.image_url;
-            pAddressEl.innerHTML = currentBusinessLocation.address1 + "<br/>" + currentBusinessLocation.city + ", " + currentBusinessLocation.state + " " + currentBusinessLocation.zip_code; 
+            h1AddresEl.innerHTML = currentBusinessLocation.address1 + "<br/>" + currentBusinessLocation.city + ", " + currentBusinessLocation.state + " " + currentBusinessLocation.zip_code; 
             p$El.innerHTML = currentBusiness.price;
             pRatingEl.innerHTML = "Rating " + currentBusiness.rating;
 
             liEl.appendChild(aEl);
             liEl.appendChild(imgEl);
-            liEl.appendChild(pAddressEl);
+            liEl.appendChild(h1AddresEl);
             liEl.appendChild(p$El);
             liEl.appendChild(pRatingEl);
 
@@ -84,12 +87,38 @@ console.log("Fake Yelp");
             headers: {
                 'Authorization': 'Bearer ' + API_KEY
             }
+            
         })
         //the response is the JSON data we are getting back
         .then(function(response){
-            console.log('here is the get response data for key:', response.data, response);
+            console.log('here is the get response data for key:', response.data);
             displayBusinesses(response.data.businesses);
+            getLatLong(response)
+            
         });
     }
+
+    
+
+    let getLatLong = function(response){
+		var locationsArray = []
+		response.data.businesses.forEach(business => {
+			const coordinate = {
+				name: business.name,
+				lat: business.coordinates.latitude, 
+				lng: business.coordinates.longitude,
+				phone: business.phone,
+			}    
+			locationsArray.push(coordinate)
+		})
+		console.table(locationsArray)
+        googleMaps.showMarkers(locationsArray)
+        
+        
+	}
+	
+	return {
+		getLatLong: getLatLong
+	}
 
 })()
