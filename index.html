@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="x-ua-compatible" content="ie=edge">
-		<title> ¯\_(ツ)_/¯ </title>
+		<title>Zelp</title>
 		<meta name="description" content="">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
@@ -12,33 +12,36 @@
 	</head>
 	<body>
 		<div class="yelp-wrapper">
-				<h1 class="company-name">Zelp</h1>
+			<h1 class="company-name">Zelp</h1>
 
-				<form class="form-wrapper">
-					<!-- <label class="label-food-input" data-placeholder="Find"> -->
-						<div class="label-food-input" data-placeholder="Find"></div>
-						<input class="find-food-input"  type="text" name="term" id="term"/>
-					<!-- </label>	 -->
-					<label>
-						<input class="find-area-input" placeholder="Area" type="text" name="location" id="location"/>
-					</label>
-					<div>	
-						<br/>
-					</div>
-					<a id="search" href="#">Search</a>
-				</form>
-			</div>
-			<div class="results-wrapper">
-					<div id="results">
-					</div>
+			<form class="form-wrapper">
+					<div class="label-food-input" data-placeholder="Find"></div>
+					<div class="label-food" data-food="Burgers"></div>
+					<div class="label-food" data-food="Pizza"></div>
+					<div class="label-food" data-food="Chinese"></div>
+					<div class="label-food" data-food="Pasta"></div>
+					<input class="find-food-input" type="text" name="term" id="term"/>
+				<label>
+					<input class="find-area-input" placeholder="Area" type="text" name="location" id="location"/>
+				</label>
+				<div>	
+					<br/>
 				</div>
-			<div id="map"></div>
+				<a id="search" href="#">Search</a>
+			</form>
+		</div>
+		<div class="results-wrapper">
+				<div id="results">
+				</div>
+			</div>
+		<div id="map" class="mapClosed"></div>
 
 
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js"></script>
 		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-		<!-- <script src=dist/js/googleMaps.js></script> -->
+		<script src="dist/js/googleMaps.js"></script>
 		<script src="dist/js/main.js"></script>
-		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBOX89cgwf-vI0aYcjRK9Hi19FtTXdCbnQ&callback=initMap"
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBOX89cgwf-vI0aYcjRK9Hi19FtTXdCbnQ&callback=googleMaps.initMap"
 		async defer  type="text/javascript"></script>
 		
 	</body>

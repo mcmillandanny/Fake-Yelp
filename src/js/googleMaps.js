@@ -3,25 +3,30 @@ var googleMaps = (function() {
     var map;
     var markers = [];
     function initMap() {
-        var buisnessLocation = {lat: business.coordinates.latitude, lng: business.coordinates.longitude};
+
+        console.log("googleMaps.initMap()")
+        // var buisnessLocation = {lat: business.coordinates.latitude, lng: business.coordinates.longitude};
         map = new google.maps.Map(document.getElementById('map'), {
-            center: buisnessLocation,
-            zoom: 16
+            center: {
+                lat: 33.7,
+                lng: -84.3
+            },
+            zoom: 10
         });
 
         // var infoWindow = new google.maps.InfoWindow({
         //     content: 'Welcome'
         // });
 
-        var marker = new google.maps.Marker({
-            position: buisnessLocation,
-            map: map
-        });
-        markers.push(marker)
+        // var marker = new google.maps.Marker({
+        //     position: buisnessLocation,
+        //     map: map
+        // });
+        // markers.push(marker)
     
-        marker.addListener('click', function() {
-            infoWindow.open(map, marker);
-        })
+        // marker.addListener('click', function() {
+        //     infoWindow.open(map, marker);
+        // })
     }
 
     // let deleteMarkers = function () {
@@ -48,10 +53,10 @@ var googleMaps = (function() {
                 content: location.name + "<br>" + location.phone
 
             });
-                marker.addListener('click', function() {
-                    infoWindow.open(map, marker);
-                })
-                markers.push(marker)
+            marker.addListener('click', function() {
+                infoWindow.open(map, marker);
+            })
+            markers.push(marker)
 
 
                                 
@@ -59,7 +64,7 @@ var googleMaps = (function() {
         });
 
         // map.fitBounds(bounds);
-        console.log(markers)
+        // console.log(markers)
     }
 
     

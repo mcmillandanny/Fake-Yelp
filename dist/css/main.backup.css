@@ -2,6 +2,7 @@
    v2.0 | 20110126
    License: none (public domain)
 */
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -11,8 +12,8 @@ b, u, i, center,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
 	margin: 0;
@@ -22,35 +23,40 @@ time, mark, audio, video {
 	font: inherit;
 	vertical-align: baseline;
 }
-
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure,
+article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
-
 body {
 	line-height: 1;
 }
-
 ol, ul {
 	list-style: none;
 }
-
 blockquote, q {
 	quotes: none;
 }
-
 blockquote:before, blockquote:after,
 q:before, q:after {
 	content: '';
 	content: none;
 }
-
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+
+
+* {
+	box-sizing: border-box;
+
+}
+body {
+	font-family: 'PT Sans', sans-serif;
+}
+
+
 
 .yelp-wrapper {
 	background: url("/dist/img/bg-yelp.png") no-repeat;
@@ -68,7 +74,8 @@ table {
 	top: 25%;
 	left: 50%;
 	transform: translate(-50%, -20%);
-	padding-bottom: 20px;
+	border-bottom: 1px solid black;
+	padding-bottom: 10px;
 }
 
 .yelp-wrapper .form-wrapper {
@@ -105,7 +112,10 @@ table {
 	border: 1px white solid;
 	outline: none;
 	background: #fff;
+
+	
 }
+
 
 .yelp-wrapper .form-wrapper #search {
 	position: absolute;
@@ -119,13 +129,11 @@ table {
 	background: orange;
 	padding: 10px;
 	border-radius: 4px;
-	transition: .2;
 }
 
 .results-wrapper {
 	margin: 20px;
 	width: 40%;
-	float: left;
 }
 
 .label-food-input, .find-food-input {
@@ -134,10 +142,11 @@ table {
 	padding-right: 76px;
 	width: 170px;
 	box-sizing: border-box;
+
 }
 
 .label-food-input::after {
-	content: "" attr(data-placeholder);
+	content:  "" attr(data-placeholder);
 	position: absolute;
 	top: -28px;
 	left: -34px;
@@ -147,32 +156,13 @@ table {
 	color: rgba(0, 0, 0, 0.6);
 	font-weight: bold;
 	z-index: 1;
-}
-
-.label-food {
-	display: none;
-	position: relative;
-	padding-right: 76px;
-	width: 170px;
-	box-sizing: border-box;
-	z-index: 10;
-}
-
-.label-food::after {
-	content: "" attr(data-food);
-	position: absolute;
-	top: -28px;
-	left: 4px;
-	font-family: arial, helvetica, sans-serif;
-	font-size: 12px;
-	color: rgba(0, 0, 0, 0.9);
-	font-weight: bold;
-}
+	}
 
 /* .label-food-input::before:hover {
 	color: red;
 	opacity: 0;
 } */
+
 .results-wrapper li {
 	display: flex;
 	flex-direction: column;
@@ -186,34 +176,24 @@ table {
 	text-decoration: none;
 	color: #d32323;
 	padding: 10px;
+
 }
 
 .results-wrapper img {
 	max-width: 100%;
-	-webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
-	-moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
-	box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+	-webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+	box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
 }
 
 .results-wrapper p, h1 {
 	text-align: center;
 	margin: 2px;
 }
-
 .results-wrapper h1 {
 	margin-top: 10px;
+
 }
 
-#map {
-	width: 50vw;
-	height: 100vh;
-	float: right;
-	position: fixed;
-	display: none;
-	margin: 25px;
-	overflow-y: scroll;
-}
-
-/*# sourceMappingURL=main.css.map */
 
 /*# sourceMappingURL=main.css.map */

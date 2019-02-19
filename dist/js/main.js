@@ -4,12 +4,16 @@ console.log("Fake Yelp");
 
 (function () {
 
+    var showMap = false;
+
     var API_KEY = 'xICUj5FsqM8P6cfNhFQEYwtYzrv75F4WEqj-Hns-fUTZgyLOzQBVyr01f9g3p-5P3J9S7LkrGhLEWjqi7t_ZHoZedrj9zV1E34GIIu1nLLF814cws_futxGtRGPiWnYx';
 
+    var googleMap = document.querySelector('.mapClosed');
     var termEl = document.getElementById('term');
     var locationEl = document.getElementById('location');
     var searchBtn = document.getElementById('search');
     var resultsEl = document.getElementById('results');
+    var inputField = document.querySelector('label-food');
 
     searchBtn.addEventListener("click", function (e) {
         e.preventDefault();
@@ -108,6 +112,11 @@ console.log("Fake Yelp");
             };
             locationsArray.push(coordinate);
         });
+
+        showMap = true;
+        if (showMap === true) {
+            googleMap.style.display = "block";
+        }
         console.table(locationsArray);
         googleMaps.showMarkers(locationsArray);
     };
@@ -116,4 +125,51 @@ console.log("Fake Yelp");
         getLatLong: getLatLong
     };
 })();
+
+// inputField.addEventListener("mousedown", () => {
+
+
+// })
+
+// foodType.forEach(function(singleIndex) {
+//     singleIndex.style.display = "none";
+// })
+
+
+var foodType = document.querySelectorAll('.label-food');
+var currentTextIndex = 0;
+console.log(foodType);
+
+setInterval(function () {
+
+    var hideShowingText = function hideShowingText() {
+        TweenMax.to(foodType[currentTextIndex], 0.3, {
+            display: "none",
+            opacity: 0,
+            x: 30
+        });
+    };
+
+    var showNewText = function showNewText() {
+        TweenMax.fromTo(foodType[currentTextIndex], 0.3, {
+            display: "none",
+            opacity: 0,
+            x: -20
+        }, {
+            display: "block",
+            opacity: 1,
+            x: 0
+        });
+    };
+
+    var next = function next() {
+        hideShowingText();
+        currentTextIndex++;
+        if (currentTextIndex === foodType.length) {
+            currentTextIndex = 0;
+        }
+        showNewText();
+    };
+    next();
+}, 2000);
 //# sourceMappingURL=main.js.map
