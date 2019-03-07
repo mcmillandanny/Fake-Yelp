@@ -107,6 +107,14 @@ table {
 	background: #fff;
 }
 
+.yelp-wrapper .form-wrapper .find-area-input.filled ~ .label-area {
+	display: none !important;
+}
+
+.yelp-wrapper .form-wrapper .find-area-input.filled ~ .label-area-input {
+	display: none !important;
+}
+
 .yelp-wrapper .form-wrapper #search {
 	position: absolute;
 	top: 100%;
@@ -160,7 +168,29 @@ table {
 	z-index: 1;
 }
 
+.label-area-input::after {
+	content: "" attr(data-placeholder);
+	position: absolute;
+	top: 18px;
+	left: -30px;
+	font-family: arial, helvetica, sans-serif;
+	font-size: 12px;
+	display: block;
+	color: rgba(0, 0, 0, 0.6);
+	font-weight: bold;
+	z-index: 1;
+}
+
 .label-food {
+	display: none;
+	position: relative;
+	padding-right: 76px;
+	width: 170px;
+	box-sizing: border-box;
+	z-index: 10;
+}
+
+.label-area {
 	display: none;
 	position: relative;
 	padding-right: 76px;
@@ -173,6 +203,17 @@ table {
 	content: "" attr(data-food);
 	position: absolute;
 	top: -28px;
+	left: 4px;
+	font-family: arial, helvetica, sans-serif;
+	font-size: 12px;
+	color: rgba(0, 0, 0, 0.9);
+	font-weight: bold;
+}
+
+.label-area::after {
+	content: "" attr(data-food);
+	position: absolute;
+	top: 9px;
 	left: 4px;
 	font-family: arial, helvetica, sans-serif;
 	font-size: 12px;

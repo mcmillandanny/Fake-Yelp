@@ -15,12 +15,21 @@ console.log("Fake Yelp");
     var resultsEl = document.getElementById('results');
     var inputField = document.querySelector('label-food');
     var findFoodInput = document.querySelector('input.find-food-input');
+    var findAreaInput = document.querySelector(".find-area-input");
 
     findFoodInput.addEventListener('keyup', function () {
-        if (findFoodInput.value) {
+        if (findFoodInput.value && findAreaInput.value) {
             findFoodInput.classList.add('filled');
         } else {
             findFoodInput.classList.remove('filled');
+        }
+    });
+
+    findAreaInput.addEventListener('keyup', function () {
+        if (findAreaInput.value) {
+            findAreaInput.classList.add('filled');
+        } else {
+            findAreaInput.classList.remove('filled');
         }
     });
 
@@ -128,14 +137,16 @@ console.log("Fake Yelp");
 })();
 
 var foodType = document.querySelectorAll('.label-food');
+var areaInput = document.querySelectorAll(".label-area");
 
-var currentTextIndex = 0;
+var currentTextIndexArea = 0;
+var currentTextIndexFood = 0;
 console.log(foodType);
 
 setInterval(function () {
 
     var hideShowingText = function hideShowingText() {
-        TweenMax.to(foodType[currentTextIndex], 0.3, {
+        TweenMax.to(areaInput[currentTextIndexArea], 0.5, {
             display: "none",
             opacity: 0,
             x: 30
@@ -143,7 +154,7 @@ setInterval(function () {
     };
 
     var showNewText = function showNewText() {
-        TweenMax.fromTo(foodType[currentTextIndex], 0.3, {
+        TweenMax.fromTo(areaInput[currentTextIndexArea], 0.5, {
             display: "none",
             opacity: 0,
             x: -20
@@ -156,9 +167,42 @@ setInterval(function () {
 
     var next = function next() {
         hideShowingText();
-        currentTextIndex++;
-        if (currentTextIndex === foodType.length) {
-            currentTextIndex = 0;
+        currentTextIndexArea++;
+        if (currentTextIndexArea === areaInput.length) {
+            currentTextIndexArea = 0;
+        }
+        showNewText();
+    };
+    next();
+}, 4000);
+
+setInterval(function () {
+
+    var hideShowingText = function hideShowingText() {
+        TweenMax.to(foodType[currentTextIndexFood], 0.3, {
+            display: "none",
+            opacity: 0,
+            x: 30
+        });
+    };
+
+    var showNewText = function showNewText() {
+        TweenMax.fromTo(foodType[currentTextIndexFood], 0.3, {
+            display: "none",
+            opacity: 0,
+            x: -20
+        }, {
+            display: "block",
+            opacity: 1,
+            x: 0
+        });
+    };
+
+    var next = function next() {
+        hideShowingText();
+        currentTextIndexFood++;
+        if (currentTextIndexFood === foodType.length) {
+            currentTextIndexFood = 0;
         }
         showNewText();
     };

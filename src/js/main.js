@@ -13,13 +13,24 @@ console.log("Fake Yelp");
     const resultsEl = document.getElementById('results');
     let inputField = document.querySelector('label-food');
     let findFoodInput = document.querySelector('input.find-food-input');
+    let findAreaInput = document.querySelector(".find-area-input");
 
 
     findFoodInput.addEventListener('keyup', function() {
-        if (findFoodInput.value) {
+        if (findFoodInput.value && findAreaInput.value) {
             findFoodInput.classList.add('filled')
         } else {
             findFoodInput.classList.remove('filled')
+
+        }
+    })
+
+    findAreaInput.addEventListener('keyup', function() {
+        if (findAreaInput.value) {
+            findAreaInput.classList.add('filled')
+        } else {
+            findAreaInput.classList.remove('filled')
+
         }
     })
 
@@ -135,16 +146,17 @@ console.log("Fake Yelp");
 })()
 
 let foodType = document.querySelectorAll('.label-food');
+let areaInput = document.querySelectorAll(".label-area");
 
 
-
-let currentTextIndex = 0;
+let currentTextIndexArea = 0;
+let currentTextIndexFood = 0;
 console.log(foodType)
 
 setInterval(() => {
 
     let hideShowingText = function() {
-        TweenMax.to( foodType[currentTextIndex], 0.3, { 
+        TweenMax.to( areaInput[currentTextIndexArea], 0.5, { 
             display: "none", 
             opacity: 0,
             x: 30,
@@ -152,7 +164,7 @@ setInterval(() => {
     }
 
     let showNewText = function() {
-        TweenMax.fromTo( foodType[currentTextIndex], 0.3, {
+        TweenMax.fromTo( areaInput[currentTextIndexArea], 0.5, {
             display: "none", 
             opacity: 0,
             x: -20
@@ -165,9 +177,42 @@ setInterval(() => {
 
     let next = function() {
         hideShowingText()
-        currentTextIndex++
-        if (currentTextIndex === foodType.length) {
-			currentTextIndex = 0;
+        currentTextIndexArea++
+        if (currentTextIndexArea === areaInput.length) {
+			currentTextIndexArea = 0;
+		}
+		showNewText()
+    }
+    next()
+}, 4000)
+
+setInterval(() => {
+
+    let hideShowingText = function() {
+        TweenMax.to( foodType[currentTextIndexFood], 0.3, { 
+            display: "none", 
+            opacity: 0,
+            x: 30,
+        })
+    }
+
+    let showNewText = function() {
+        TweenMax.fromTo( foodType[currentTextIndexFood], 0.3, {
+            display: "none", 
+            opacity: 0,
+            x: -20
+        }, { 
+            display: "block", 
+            opacity: 1,
+            x: 0,
+         })
+    }   
+
+    let next = function() {
+        hideShowingText()
+        currentTextIndexFood++
+        if (currentTextIndexFood === foodType.length) {
+			currentTextIndexFood = 0;
 		}
 		showNewText()
     }
