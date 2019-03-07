@@ -14,6 +14,15 @@ console.log("Fake Yelp");
     var searchBtn = document.getElementById('search');
     var resultsEl = document.getElementById('results');
     var inputField = document.querySelector('label-food');
+    var findFoodInput = document.querySelector('input.find-food-input');
+
+    findFoodInput.addEventListener('keyup', function () {
+        if (findFoodInput.value) {
+            findFoodInput.classList.add('filled');
+        } else {
+            findFoodInput.classList.remove('filled');
+        }
+    });
 
     searchBtn.addEventListener("click", function (e) {
         e.preventDefault();
@@ -33,11 +42,6 @@ console.log("Fake Yelp");
             var checkedItem = checkedItems[i];
             allChecked = allChecked + ', ' + checkedItem;
         }
-        //option 2: the ES6 way
-        // [...checkedItems].map(function(checkItem){  - this turns it into an array as far as js is concerned
-        //return checkedItem.value });
-        //const allChecked= checkedValues.join(','); 
-        //conole.log('allChecked', allChecked);
         return allChecked;
     }
 
@@ -80,7 +84,6 @@ console.log("Fake Yelp");
         }
     }
 
-    //params and headers are part of axios. It is builing the + "" + "" that we did last week
     function searchYelp(location, queryTerm, prices) {
         axios.get("https://circuslabs.net/proxies/yelp-fusion-proxy/", {
             params: {
@@ -92,9 +95,7 @@ console.log("Fake Yelp");
                 'Authorization': 'Bearer ' + API_KEY
             }
 
-        })
-        //the response is the JSON data we are getting back
-        .then(function (response) {
+        }).then(function (response) {
             console.log('here is the get response data for key:', response.data);
             displayBusinesses(response.data.businesses);
             getLatLong(response);
@@ -126,17 +127,8 @@ console.log("Fake Yelp");
     };
 })();
 
-// inputField.addEventListener("mousedown", () => {
-
-
-// })
-
-// foodType.forEach(function(singleIndex) {
-//     singleIndex.style.display = "none";
-// })
-
-
 var foodType = document.querySelectorAll('.label-food');
+
 var currentTextIndex = 0;
 console.log(foodType);
 

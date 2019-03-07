@@ -128,12 +128,23 @@ table {
 	float: left;
 }
 
-.label-food-input, .find-food-input {
+.label-food-input,
+.find-food-input {
 	position: relative;
 	display: block;
 	padding-right: 76px;
 	width: 170px;
 	box-sizing: border-box;
+}
+
+.label-food-input.filled ~ .label-food,
+.find-food-input.filled ~ .label-food {
+	display: none !important;
+}
+
+.label-food-input.filled ~ .label-food-input,
+.find-food-input.filled ~ .label-food-input {
+	display: none !important;
 }
 
 .label-food-input::after {
@@ -169,10 +180,6 @@ table {
 	font-weight: bold;
 }
 
-/* .label-food-input::before:hover {
-	color: red;
-	opacity: 0;
-} */
 .results-wrapper li {
 	display: flex;
 	flex-direction: column;
@@ -207,7 +214,6 @@ table {
 #map {
 	width: 50vw;
 	height: 100vh;
-	float: right;
 	position: fixed;
 	display: none;
 	margin: 25px;

@@ -5,7 +5,6 @@ var googleMaps = (function() {
     function initMap() {
 
         console.log("googleMaps.initMap()")
-        // var buisnessLocation = {lat: business.coordinates.latitude, lng: business.coordinates.longitude};
         map = new google.maps.Map(document.getElementById('map'), {
             center: {
                 lat: 33.7,
@@ -13,33 +12,8 @@ var googleMaps = (function() {
             },
             zoom: 10
         });
-
-        // var infoWindow = new google.maps.InfoWindow({
-        //     content: 'Welcome'
-        // });
-
-        // var marker = new google.maps.Marker({
-        //     position: buisnessLocation,
-        //     map: map
-        // });
-        // markers.push(marker)
-    
-        // marker.addListener('click', function() {
-        //     infoWindow.open(map, marker);
-        // })
     }
-
-    // let deleteMarkers = function () {
-    //         for (var i = 0; i < markers.length; i++) {
-    //             markers[i].setMap(null);
-    //         }
-    //         markers = [];
-    //     };
-
     let showMarkers = function(locationsArray) {
-        // deleteMarkers()
-        // bounds = new google.maps.LatLngBounds();
-        
 
         locationsArray.forEach(function (location) {
             var position = new google.maps.LatLng(location.lat, location.lng);
@@ -60,11 +34,8 @@ var googleMaps = (function() {
 
 
                                 
-            // bounds.extend(position);
         });
 
-        // map.fitBounds(bounds);
-        // console.log(markers)
     }
 
     

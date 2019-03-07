@@ -73,20 +73,6 @@
 		border-radius: 4px;
 		transition: .2;
 	}
-
-	
-
-	// a#search:hover {
-	// 	animation: wiggle 0.82s linear;
-	// }
-
-	// @keyframes wiggle {
-	// 	0% {transform: rotate(10deg);}
-	// 	25% {transform: rotate(-10deg);}
-	// 	50% {transform: rotate(20deg);}
-	// 	75% {transform: rotate(-5deg);}
-	// 	100% {transform: rotate(0deg);}
-	//   }
 }
 
 
@@ -96,12 +82,20 @@
 	float: left;
 }
 
-.label-food-input, .find-food-input {
+.label-food-input, 
+.find-food-input {
 	position: relative;
 	display: block;
 	padding-right: 76px;
 	width: 170px;
 	box-sizing: border-box;
+
+	&.filled ~ .label-food {
+		display: none !important;
+	}
+	&.filled ~ .label-food-input {
+		display: none !important;
+	}
 
 }
 
@@ -140,12 +134,6 @@
 	}
 	
 
-
-/* .label-food-input::before:hover {
-	color: red;
-	opacity: 0;
-} */
-
 .results-wrapper li {
 	display: flex;
 	flex-direction: column;
@@ -182,7 +170,6 @@
 #map {
 	width: 50vw;
 	height: 100vh;
-	float: right;
 	position: fixed;
 	display: none;
 	margin: 25px;
